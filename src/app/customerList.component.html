@@ -1,0 +1,32 @@
+<nav>
+	<a routerLink="" routerLinkActive="active"><span class="leftArrow"> < </span> BACK</a>
+</nav>
+<h1>Customer List</h1>
+<h3>{{errorMsg}}</h3>
+<button>ADD NEW CUSTOMER</button>
+<section>
+	<ul *ngFor="let customer of customers" class="customerCard">
+		<li><span>NAME: </span> {{customer.name}} <button (click)="onSelect(customer)">EDIT</button>
+
+			<ul>
+
+				<li><span>EMAIL: </span> {{customer.email}} </li>
+				<li><span>TELEPHONE: </span> {{customer.telephone}} </li>
+				<li><span>ADDRESS: </span>
+
+					<ul class="address">
+
+						<li><span>STREET: </span> {{customer.address.street}} </li>
+						<li><span>CITY: </span> {{customer.address.city}} </li>
+						<li><span>STATE: </span> {{customer.address.state}} </li>
+						<li><span>ZIP: </span> {{customer.address.zip}} </li>
+
+					</ul>
+				</li>
+			</ul>
+
+
+		</li>
+
+	</ul>
+</section>

@@ -1,1 +1,77 @@
 /* You can add global styles to this file, and also import other style files */
+*{
+	font-family: Arial, Helvetica, sans-serif;
+}
+h1 {
+	text-align: center;
+}
+nav a {
+	padding: 5px 10px;
+	text-decoration:  none;
+	margin-top: 10px;
+	display: inline-block;
+	background-color: #777;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	color: white;
+}
+
+.fancyEffect{
+	z-index: -2;
+	position: fixed;
+	width: 120%;
+	height: 60px;
+}
+.firstEffect{
+	top: 20px;
+	left:0px;
+	background-color:  rgba(255,0,255,0.5);
+}
+.secEffect{
+	top: 20px;
+	left:-100px;
+	background-color:  rgba(0,255,255,0.5);
+	-webkit-transform: rotate(-25deg);
+	-ms-transform: rotate(-25deg);
+	transform: rotate(-25deg);
+}
+.leftArrow{
+	font-weight: 900;
+  color:white;
+}
+.customerCard{
+	width: 80%;
+}
+section .customerCard{
+	position: relative;
+	margin: 10px auto;
+	border-left: #3AA 5px solid;
+	-webkit-box-shadow: 1px 1px #000;
+	box-shadow: 1px 1px #000;
+}
+ul {
+  list-style-type: none;
+
+  padding: 0;
+}
+li{
+	background-color: #444;
+	border: 4px #444 solid;
+	border-bottom: 2px #CCC solid;
+	color: white;
+	 text-shadow: 1px 2px #555, 2px -1px #555;
+	list-style-type: none;
+}
+ul.address{
+	padding: 10px;
+}
+li:last-child {
+  border-bottom: none;
+}
+span{
+	font-weight: 900;
+}
+li button {
+	float: right;
+}
+/*li:hover {font-size: 20px;}*/
