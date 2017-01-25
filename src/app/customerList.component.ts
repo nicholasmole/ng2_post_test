@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomerService } from './customer.service';
 import { ActivatedRoute, Router, Params } from '@angular/router';
-//SHARED INJECTOR
+
 
 @Component({
   selector: 'customer-list',
@@ -13,7 +13,8 @@ export class CustomerListComponent implements OnInit  {
 	errorMsg: string;
 	
 	//arrayhold
-	customers: any;
+	getData: any;
+	postData: any;
 	
 	//STRING to hold error message
 	public customerId;
@@ -25,7 +26,7 @@ export class CustomerListComponent implements OnInit  {
 	//INIT that subscribes to collect JSON info
 		ngOnInit(){
 			this._customerService.getCustomer()
-				.subscribe(resCustomerData => this.customers = resCustomerData,
+				.subscribe(resCustomerData => this.getData = resCustomerData,
 									resCustomerError => this.errorMsg = resCustomerError);
 			
 			/*this.route.params.subscribe((params: Params)=> {
@@ -34,7 +35,12 @@ export class CustomerListComponent implements OnInit  {
 				console.log("ID"+ this.customerId);
 			})*/
 		}
-	
+	onPlost(){
+		this._customerService.postCustomer()
+			.subscribe(resCustomerData => this.postData = resCustomerData,
+									resCustomerError => this.errorMsg = resCustomerError,
+								()=>console.log("this one calls"));
+	}
 	//LINK TO EDIT PAGE FOR EACH CUSTOMER
 	onSelect(customer){
 				this.router.navigate([customer.id], {relativeTo: this.route});

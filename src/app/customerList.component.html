@@ -5,7 +5,7 @@
 <h3>{{errorMsg}}</h3>
 <button>ADD NEW CUSTOMER</button>
 <section>
-	<ul *ngFor="let customer of customers" class="customerCard">
+	<ul *ngFor="let customer of getData" class="customerCard">
 		<li><span>NAME: </span> {{customer.name}} <button (click)="onSelect(customer)">EDIT</button>
 
 			<ul>
@@ -27,6 +27,6 @@
 
 
 		</li>
-
+		<button (click)="onPlost()">Plost</button>
 	</ul>
 </section>
