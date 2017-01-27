@@ -30,17 +30,18 @@ export class CustomerService{
 
 		postCustomer(bodyz:string){
 			//
-			let food = {name: 'name'};
-			let food2 = "name";
+			//let food = {name: 'name'};
+			let food = {name: 'bandrew',email:'Bndrew@email.com',telephone:'XXX-XXX-XXXX',address:{street:'asprin',city:'city',state:'500 mg',zip:'zip'}};
+		
 			//let food = "name="+"name";
 			//let headers = new Headers({ 'Content-Type': 'application/json' });
+			//
 			let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
 			let options = new RequestOptions({ headers: headers });
 			let body = food;
-			//let body = JSON.stringify(food);
-			 console.log(JSON.stringify(food));
-			// console.log(JSON.parse(food))
-			//let body = JSON.stringify(food);
+			
+			// console.log(JSON.stringify(food));
+			
 			return this._http.post(this._url2, body, headers)
 				.map((res: Response) => res.json())
 				.catch(this._errorHandler);
