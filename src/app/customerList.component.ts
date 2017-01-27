@@ -35,9 +35,9 @@ export class CustomerListComponent implements OnInit  {
 				console.log("ID"+ this.customerId);
 			})*/
 		}
-	onPlost(){
-		this._customerService.postCustomer()
-			.subscribe(resCustomerData => this.postData = resCustomerData,
+	onPlost(name: string){
+		this._customerService.postCustomer(name)
+			.subscribe(resCustomerData => this.postData.push(resCustomerData),
 									resCustomerError => this.errorMsg = resCustomerError,
 								()=>console.log("this one calls"));
 	}

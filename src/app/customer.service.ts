@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 
 //REQUIRED FOR INFO GRAB AND ERROR MSG
-import { Http, Response, Headers } from '@angular/http';
+import { RequestOptions, Http, Response, Headers, RequestMethod, Request } from '@angular/http';
+
 import { Observable } from 'rxjs/Observable';
+import  'rxjs/Rx';
 import  'rxjs/add/operator/map';
 import  'rxjs/add/operator/catch';
 import  'rxjs/add/observable/throw';
@@ -11,7 +13,8 @@ import  'rxjs/add/observable/throw';
 export class CustomerService{
 	
 	//URL for JSON file
-	private _url: string = "apiData/customerData.json"
+	private _url: string = "./apiData/customerData.json";
+	private _url2: string = "./apiData/custFile.php";
 	
 	public user = [];
 
@@ -25,23 +28,24 @@ export class CustomerService{
 		
 	}
 
-	//POST DATA
-	postCustomer() {
-		this.user = [{ "id": 11, "name": "Andrew2"} ];
-		//this.user2 = [ "id": 11, "name": "Andrew2"];
+		postCustomer(bodyz:string){
+			//
+			let food = {name: 'name'};
+			let food2 = "name";
+			//let food = "name="+"name";
+			//let headers = new Headers({ 'Content-Type': 'application/json' });
+			let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+			let options = new RequestOptions({ headers: headers });
+			let body = food;
+			//let body = JSON.stringify(food);
+			 console.log(JSON.stringify(food));
+			// console.log(JSON.parse(food))
+			//let body = JSON.stringify(food);
+			return this._http.post(this._url2, body, headers)
+				.map((res: Response) => res.json())
+				.catch(this._errorHandler);
+		}
 		
-	//	var json = JSON.stringify({var1: 'test',var2: 3});
-		let jsonw = JSON.stringify({var1: 'test',var2: 3});
-		let params = 'json=' + jsonw;
-		let headers = new Headers();
-		headers.append('Content-Type', 'application/json');
-		//headers.append('Content-Type', this._url);
-		
-		//return this._http.post(this._url, params,{ headers }) 
-		return this._http.post(this._url, params,{ headers }) 
-		.map((response:Response) => response.json())
-			.catch(this._errorHandler);
-	}
 
 	//SEND ERROR
 	_errorHandler(error: Response){
